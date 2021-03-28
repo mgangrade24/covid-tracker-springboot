@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Covid-19 Cases - Worldwide</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"><br>
+	<h1>Corona Virus Tracker</h1>
+	<p>This application lists the current number of confirmed cases reported across the globe.</p><br>
+	
+	<div class="jumbotron row">
+	<div class="col-md-6 text-center">
+		<h1 class="display-4" th:text = "${totalReportedCases}"></h1>
+		<p>Total Cases Reported Till Today</p>
+	</div>	
+	<div class="col-md-6 text-center">
+		<h1 class="display-4" th:text = "${newReportedCases}"></h1>
+		<p>Total New Cases In The Last Day</p>
+	</div>	
+	</div>
+	
+	<table class="table">
+      <tr>
+        <th>Country</th>
+        <th>State</th>
+        <th>Total Cases Reported</th>
+        <th>Changes Since Last Day</th>
+      </tr>
+      <tr th:each="locationStat : ${locationStats}">
+        <td th:text="${locationStat.country}"></td>
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.latestTotalCases}">0</td>
+        <td th:text="${locationStat.diffFromPrevDay}">0</td>
+      </tr>
+    </table>
+</div>
+    
+    <footer class="py-4 jumbotron footer flex-shrink-0 fixed-bottom text-center" style="color:black; margin-bottom: 0px;">
+    <div class="container text-center">
+         <a href="https://www.linkedin.com/in/mousam-gangrade/" style="color:black; text-decoration: none;"><b>&#169; </b>Mousam Gangrade</a>
+    </div>
+</footer>
+</body>
+</html>
